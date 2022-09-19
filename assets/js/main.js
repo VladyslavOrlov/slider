@@ -3,7 +3,7 @@
   const container = document.querySelector('#carousel');
   const slides = container.querySelectorAll('.slide');
   const indicatorsContainer = container.querySelector('#indicators-container');
-  const indicators = indicatorsContainer.querySelectorAll('.indicator');
+  const indicators = container.querySelectorAll('.indicator');
   const pauseBtn = container.querySelector('#pause');
   const prevBtn = container.querySelector('#prev');
   const nextBtn = container.querySelector('#next');
@@ -14,7 +14,7 @@
   const CODE_SPACE = 'Space';
   
   let currentSlide = 0;
-  let siPlaying = true;
+  let isPlaying = true;
   let timerID = null;
   let swipeStartX = null;
   let swipeEndX = null;
@@ -38,13 +38,13 @@
   function pause() {
     isPlaying = false;
     clearInterval(timerID);
-   pauseBtn.innerHTML = 'Play';
+    pauseBtn.innerHTML = 'Play';
   }
   
   function play() {
     isPlaying = true;
     timerID = setInterval(gotoNext, 2000);
-   pauseBtn.innerHTML = 'Pause';
+    pauseBtn.innerHTML = 'Pause';
   }
   
   function pausePlay() {
@@ -94,8 +94,8 @@
   
   function initListeners() {
     pauseBtn.addEventListener('click', pausePlay);
-    prevBtn.addEventListener('click', prev);
-    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', gotoPrev);
+    nextBtn.addEventListener('click', gotoNext);
     indicatorsContainer.addEventListener('click', indicate);
     container.addEventListener('touchstart', swipeStart)
     container.addEventListener('touchend', swipeEnd)
