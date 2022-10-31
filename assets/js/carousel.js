@@ -1,6 +1,14 @@
 class Carousel {
   constructor(p) {
-    const setting = {...{containerID: '#carousel', slideID: '.slide', interval: 5000, isPlaying: true}, ...p};
+    const setting = {
+      ...{
+        containerID: '#carousel',
+        slideID: '.slide',
+        interval: 5000,
+        isPlaying: true,
+      },
+      ...p,
+    };
     this.container = document.querySelector(setting.containerID);
     this.slides = this.container.querySelectorAll(setting.slideID);
     this.interval = setting.interval;
@@ -23,11 +31,11 @@ class Carousel {
     const controls = document.createElement('div');
     const PAUSE = `<span class="control control-pause" id="pause">
                      ${this.isPlaying ? this.FA_PAUSE : this.FA_PLAY}
-                   </span>`
-    const PREV = `<span class="control control-prev" id="prev">${this.FA_PREV}</span>`
-    const NEXT = `<span class="control control-next" id="next">${this.FA_NEXT}</span>`
+                   </span>`;
+    const PREV = `<span class="control control-prev" id="prev">${this.FA_PREV}</span>`;
+    const NEXT = `<span class="control control-next" id="next">${this.FA_NEXT}</span>`;
 
-    controls.setAttribute('class', 'controls')
+    controls.setAttribute('class', 'controls');
     controls.innerHTML = PAUSE + PREV + NEXT;
 
     this.container.append(controls);
@@ -38,18 +46,21 @@ class Carousel {
   }
 
   _initIndicators() {
-  const indicators = document.createElement('div');
+    const indicators = document.createElement('div');
 
-  indicators.setAttribute('class', 'indicators');
+    indicators.setAttribute('class', 'indicators');
 
-  for(let i = 0; i < this.SLIDES_COUNT; i++) {
-    const indicator = document.createElement('div');
+    for (let i = 0; i < this.SLIDES_COUNT; i++) {
+      const indicator = document.createElement('div');
 
-    indicator.setAttribute('class', i !== 0 ? 'indicator' : 'indicator active');
-    indicator.dataset.slideTo = `${i}`;
+      indicator.setAttribute(
+        'class',
+        i !== 0 ? 'indicator' : 'indicator active'
+      );
+      indicator.dataset.slideTo = `${i}`;
 
-    indicators.append(indicator);
-  }
+      indicators.append(indicator);
+    }
 
     this.container.append(indicators);
 
@@ -62,10 +73,9 @@ class Carousel {
     this.prevBtn.addEventListener('click', this._prev.bind(this));
     this.nextBtn.addEventListener('click', this._next.bind(this));
     this.indContainer.addEventListener('click', this._indicate.bind(this));
-    document.addEventListener('keydown', this._pressKey.bind(this))
+    document.addEventListener('keydown', this._pressKey.bind(this));
   }
 
-  
   _gotoNth(n) {
     this.slides[this.currentSlide].classList.toggle('active');
     this.indItems[this.currentSlide].classList.toggle('active');
@@ -73,7 +83,7 @@ class Carousel {
     this.slides[this.currentSlide].classList.toggle('active');
     this.indItems[this.currentSlide].classList.toggle('active');
   }
-  
+
   _gotoPrev() {
     this._gotoNth(this.currentSlide - 1);
   }
@@ -81,52 +91,52 @@ class Carousel {
   _gotoNext() {
     this._gotoNth(this.currentSlide + 1);
   }
-  
+
   _pause() {
     this.isPlaying = false;
     clearInterval(this.timerID);
     this.pauseBtn.innerHTML = this.FA_PLAY;
   }
-  
+
   _play() {
     this.isPlaying = true;
     this.pauseBtn.innerHTML = this.FA_PAUSE;
     this._tick();
   }
-  
+
   _prev() {
     this._gotoPrev();
     this._pause();
-  } 
-  
+  }
+
   _next() {
     this._gotoNext();
     this._pause();
   }
-  
+
   _indicate(e) {
     const target = e.target;
-  
+
     if (target && target.classList.contains('indicator')) {
       const dataSlide = +target.dataset.slideTo;
-  
-      if(isNaN(dataSlide)) return;
+
+      if (isNaN(dataSlide)) return;
       this._pause();
       this._gotoNth(dataSlide);
     }
   }
-  
+
   _pressKey(e) {
-    if(e.code === this.CODE_LEFT_ARROW) this._prev();
-    if(e.code === this.CODE_RIGHT_ARROW) this._next();
-    if(e.code === this.CODE_SPACE) this.pausePlay();
+    if (e.code === this.CODE_LEFT_ARROW) this._prev();
+    if (e.code === this.CODE_RIGHT_ARROW) this._next();
+    if (e.code === this.CODE_SPACE) this.pausePlay();
   }
 
   _tick(flag = true) {
     if (!flag) return;
     this.timerID = setInterval(() => this._gotoNext(), this.interval);
   }
-  
+
   pausePlay() {
     if (this.isPlaying) {
       this._pause();
