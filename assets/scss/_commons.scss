@@ -11,6 +11,20 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
 .fa-angle-left,
 .fa-angle-right {
   color: rgba($color-light, 0.4);

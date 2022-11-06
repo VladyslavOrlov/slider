@@ -1,7 +1,6 @@
 .indicators {
   position: absolute;
-  z-index: 1;
-  bottom: 0;
+  z-index: 2;
 
   display: flex;
   justify-content: center;
@@ -15,8 +14,8 @@
 }
  
 .indicator {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 10px;
   margin: -40px 7.5px 0;
 
   border: 3px solid rgba($color-light, 0.4);
