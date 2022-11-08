@@ -1,3 +1,5 @@
+// вариант учитель
+
 class Carousel {
   constructor(p) {
     const setting = {
@@ -17,6 +19,7 @@ class Carousel {
 
   _initProps() {
     this.currentSlide = 0;
+
     this.SLIDES_COUNT = this.slides.length;
     this.CODE_LEFT_ARROW = 'ArrowLeft';
     this.CODE_RIGHT_ARROW = 'ArrowRight';
@@ -28,7 +31,7 @@ class Carousel {
   }
 
   _initControls() {
-    const controls = document.createElement('div');
+    let controls = document.createElement('div');
     const PAUSE = `<span id="pause-btn" class="control-pause">  
     <span id="fa-pause-icon">${this.FA_PAUSE}</span>
     <span id="fa-play-icon">${this.FA_PLAY}</span>
@@ -47,16 +50,16 @@ class Carousel {
     this.pauseIcon = this.container.querySelector('#fa-pause-icon');
     this.playIcon = this.container.querySelector('#fa-play-icon');
 
-    // this.isPlaying ? this._pauseVisible() : this._playVisible();
+    this.isPlaying ? this._pauseVisible() : this._playVisible();
   }
 
   _initIndicators() {
-    const indicators = document.createElement('div');
+    let indicators = document.createElement('ol');
 
     indicators.setAttribute('class', 'indicators');
 
     for (let i = 0; i < this.SLIDES_COUNT; i++) {
-      const indicator = document.createElement('div');
+      const indicator = document.createElement('li');
 
       indicator.setAttribute(
         'class',
@@ -70,7 +73,7 @@ class Carousel {
     this.container.append(indicators);
 
     this.indContainer = this.container.querySelector('.indicators');
-    this.indItems = this.indContainer.querySelectorAll('.indicator');
+    this.indItems = this.container.querySelectorAll('.indicator');
   }
 
   _initListeners() {
@@ -123,24 +126,24 @@ class Carousel {
   }
 
   _prev() {
-    this._gotoPrev();
     this._pause();
+    this._gotoPrev();
   }
 
   _next() {
-    this._gotoNext();
     this._pause();
+    this._gotoNext();
   }
 
   _indicate(e) {
-    const target = e.target;
+    let target = e.target;
 
-    if (target && target.classList.contains('indicator')) {
-      const dataSlide = +target.dataset.slideTo;
+    if (target && target.matches('li.indicator')) {
+      // const dataSlide = +target.dataset.slideTo;
 
-      if (isNaN(dataSlide)) return;
+      // if (isNaN(dataSlide)) return;
       this._pause();
-      this._gotoNth(dataSlide);
+      this._gotoNth(+target.dataset.slideTo);
     }
   }
 
@@ -153,6 +156,15 @@ class Carousel {
   _tick(flag = true) {
     if (!flag) return;
     this.timerID = setInterval(() => this._gotoNext(), this.interval);
+  }
+
+  _pauseVisible(isVisible = true) {
+    this.pauseIcon.style.opacity = isVisible ? 1 : 0;
+    this.playIcon.style.opacity = !isVisible ? 1 : 0;
+  }
+
+  _playVisible() {
+    this._pauseVisible(false);
   }
 
   pausePlay() {
