@@ -24,20 +24,16 @@ li {
   list-style: none;
 }
 
-img {
-  vertical-align: top;
-}
-
 .fa-angle-left,
 .fa-angle-right {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .fa-play-circle,
 .fa-pause-circle {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 40vh;
+  font-size: 20vh;
 }
 
 .main {
@@ -48,7 +44,7 @@ img {
 .slides {
   position: relative;
   height: 600px;
-  width: 70%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
@@ -124,8 +120,8 @@ img {
   color: white;
 }
 .control-pause {
-  top: calc(50% - 20vh);
-  left: calc(50% - 20vh);
+  top: calc(50% - 10vh);
+  left: calc(50% - 10vh);
   height: 0;
   padding: 0;
   -webkit-transition: opacity 0.25s ease-out;
