@@ -22,7 +22,6 @@
 }
 
 .control {
-
   position: absolute;
   z-index: 2;
   color: white;
@@ -35,7 +34,7 @@
   &:focus {
     color: white;
   }
-  
+
   &-pause {
     top: calc(50% - 20vh);
     left: calc(50% - 20vh);
@@ -78,11 +77,7 @@
     &:hover,
     &:focus {
       color: $color-light;
-      background: linear-gradient(
-        to right,
-        rgba($color-dark, 0.8),
-        rgba($color-dark, 0)
-      );
+      background: linear-gradient(to right, rgba($color-dark, 0.8), rgba($color-dark, 0));
       text-shadow: 0 0 10px $color-light;
     }
   }
@@ -97,12 +92,9 @@
     &:hover,
     &:focus {
       color: $color-light;
-      background: linear-gradient(
-        to left,
-        rgba($color-dark, 0.8),
-        rgba($color-dark, 0)
-      );
+      background: linear-gradient(to left, rgba($color-dark, 0.8), rgba($color-dark, 0));
       text-shadow: 0 0 10px $color-light;
     }
   }
+
 }

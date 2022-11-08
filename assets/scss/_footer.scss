@@ -6,21 +6,29 @@
     padding: 30px 0px;
   }
 }
-.clients__container {
+.clients_container {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 800px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.358);
 }
-.clients__items {
+.clients_items {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
-.clients__item {
+.clients_item {
   flex: 0 1 16.6667%;
   padding: 8px 15px;
   text-align: center;
   min-width: 140px;
 }
 
-.clients__item img {
+.clients_item img {
   max-width: 100%;
 }

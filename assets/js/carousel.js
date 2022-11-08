@@ -22,27 +22,32 @@ class Carousel {
     this.CODE_RIGHT_ARROW = 'ArrowRight';
     this.CODE_SPACE = 'Space';
     this.FA_PAUSE = '<i class="far fa-pause-circle"></i>';
-    this.PFA_PLAY = '<i class="far fa-play-circle"></i>';
-    this.PFA_PREV = '<i class="fas fa-angle-left"></i>';
-    this.PFA_NEXT = '<i class="fas fa-angle-right"></i>';
+    this.FA_PLAY = '<i class="far fa-play-circle"></i>';
+    this.FA_PREV = '<i class="fas fa-angle-left"></i>';
+    this.FA_NEXT = '<i class="fas fa-angle-right"></i>';
   }
 
   _initControls() {
     const controls = document.createElement('div');
-    const PAUSE = `<span class="control control-pause" id="pause">
-                     ${this.isPlaying ? this.FA_PAUSE : this.FA_PLAY}
-                   </span>`;
-    const PREV = `<span class="control control-prev" id="prev">${this.FA_PREV}</span>`;
-    const NEXT = `<span class="control control-next" id="next">${this.FA_NEXT}</span>`;
-
+    const PAUSE = `<span id="pause-btn" class="control-pause">  
+    <span id="fa-pause-icon">${this.FA_PAUSE}</span>
+    <span id="fa-play-icon">${this.FA_PLAY}</span>
+    </span>`;
+    const PREV = `<span id="prev-btn" class="control-prev">${this.FA_PREV}</span>`;
+    const NEXT = `<span id="next-btn" class="control-next">${this.FA_NEXT}</span>`;
     controls.setAttribute('class', 'controls');
     controls.innerHTML = PAUSE + PREV + NEXT;
 
     this.container.append(controls);
 
-    this.pauseBtn = this.container.querySelector('#pause');
-    this.prevBtn = this.container.querySelector('#prev');
-    this.nextBtn = this.container.querySelector('#next');
+    this.pauseBtn = this.container.querySelector('#pause-btn');
+    this.prevBtn = this.container.querySelector('#prev-btn');
+    this.nextBtn = this.container.querySelector('#next-btn');
+
+    this.pauseIcon = this.container.querySelector('#fa-pause-icon');
+    this.playIcon = this.container.querySelector('#fa-play-icon');
+
+    // this.isPlaying ? this._pauseVisible() : this._playVisible();
   }
 
   _initIndicators() {
@@ -74,6 +79,9 @@ class Carousel {
     this.nextBtn.addEventListener('click', this._next.bind(this));
     this.indContainer.addEventListener('click', this._indicate.bind(this));
     document.addEventListener('keydown', this._pressKey.bind(this));
+
+    this.container.addEventListener('mouseenter', this._pause.bind(this));
+    this.container.addEventListener('mouseleave', this._play.bind(this));
   }
 
   _gotoNth(n) {
@@ -93,15 +101,25 @@ class Carousel {
   }
 
   _pause() {
-    this.isPlaying = false;
-    clearInterval(this.timerID);
-    this.pauseBtn.innerHTML = this.FA_PLAY;
+    if (this.isPlaying) {
+      this._playVisible();
+      this.isPlaying = false;
+      clearInterval(this.timerID);
+    }
+    // this.isPlaying = false;
+    // clearInterval(this.timerID);
+    // this.pauseBtn.innerHTML = this.FA_PLAY;
   }
 
   _play() {
-    this.isPlaying = true;
-    this.pauseBtn.innerHTML = this.FA_PAUSE;
-    this._tick();
+    if (!this.isPlaying) {
+      this._pauseVisible();
+      this.isPlaying = true;
+      this._tick();
+    }
+    // this.isPlaying = true;
+    // this.pauseBtn.innerHTML = this.FA_PAUSE;
+    // this._tick();
   }
 
   _prev() {

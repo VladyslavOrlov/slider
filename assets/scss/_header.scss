@@ -9,13 +9,15 @@
   width: 100%;
   top: 0;
   left: 0;
-  padding: 20px 0;
+  right: 0;
+  padding: 0;
+  // background-color: rgba(255, 255, 255, 0.411);
 
-  &__container {
+  &_container {
     display: grid;
     align-items: center;
 
-    padding: 0 40px;
+    padding: 0 20px;
 
     @include sm-min {
       gap: 20px;
@@ -24,18 +26,20 @@
   }
 
   @media (max-width: 479px) {
-    .header__container {
+    .header_container {
       min-height: 70px;
     }
   }
-  .header__logo {
-    font-size: 24px;
+  .header_logo {
+    font-size: 36px;
     font-weight: 700;
     color: inherit;
+    padding: 25px;
+    color: green;
   }
 
   .header-navbar {
-    &__list {
+    &_list {
       margin: 0;
       display: flex;
       list-style: none;
@@ -47,20 +51,20 @@
       }
     }
 
-    &__item {
+    &_item {
       @include sm-min {
         margin-left: 20px;
       }
     }
 
-    &__link {
+    &_link {
       position: relative;
       overflow: hidden;
       padding: 20px 10px;
       display: block;
       text-decoration: none;
       color: black;
-      font-size: 1.125rem;
+      font-size: 20px;
       transition: color 0.5s;
 
       @include sm {
