@@ -1,74 +1,75 @@
 .header {
   position: relative;
   min-height: 100px;
-}
 
-.header-menu {
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 0;
-  // background-color: rgba(255, 255, 255, 0.411);
+  &-menu {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
 
-  &_container {
-    display: grid;
-    align-items: center;
+    &__container {
+      display: grid;
+      align-items: center;
 
-    padding: 0 20px;
+      padding: 20px 10px;
 
-    @include sm-min {
-      gap: 20px;
-      grid-template-columns: auto 1fr;
+      @include md-min {
+        gap: 20px;
+        grid-template-columns: auto 1fr;
+      }
     }
   }
 
-  @media (max-width: 479px) {
-    .header_container {
-      min-height: 70px;
-    }
-  }
-  .header_logo {
+  &__logo {
     font-size: 36px;
     font-weight: 700;
     color: inherit;
-    padding: 25px;
+    padding: 25px 0px 25px 25px;
     color: green;
+
+    @include md {
+      font-size: 1.75em;
+      text-align: center;
+      padding: 10px 0px 10px 10px;
+    }
   }
 
-  .header-navbar {
-    &_list {
+  &-navbar {
+    &__list {
       margin: 0;
       display: flex;
       list-style: none;
       justify-content: flex-end;
 
-      @include sm {
-        padding: 0;
+      @include md {
         justify-content: center;
+        margin: 10px;
+        padding: 0;
       }
     }
 
-    &_item {
-      @include sm-min {
-        margin-left: 20px;
-      }
-    }
-
-    &_link {
+    &__link {
       position: relative;
       overflow: hidden;
-      padding: 20px 10px;
+      padding: 10px 10px;
       display: block;
       text-decoration: none;
       color: black;
       font-size: 20px;
       transition: color 0.5s;
 
+      @include md {
+        padding: 10px 15px;
+        font-size: 16px;
+        text-align: center;
+      }
+
       @include sm {
-        padding: 10px 10px;
+        padding: 10px 5px;
       }
 
       &:hover::after,
