@@ -14,8 +14,8 @@
 }
 
 .indicator {
-  width: 30px;
-  height: 10px;
+  width: $gap-lg;
+  height: $gap-xs;
   margin: -40px 7.5px 0;
 
   border: 3px solid rgba($color-light, 0.4);
@@ -34,6 +34,6 @@
 
   &.active {
     border-color: $color-light;
-    box-shadow: 0 0 10px $color-light;
+    box-shadow: 0 0 $gap-xs $color-light;
   }
 }

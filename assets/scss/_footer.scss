@@ -7,7 +7,7 @@
     left: 0;
     right: 0;
     padding: 5px;
-    background-color: rgba(0, 0, 0, 0.358);
+    background-color: $color-darktranspanent;
   }
 
   &__items {
@@ -20,12 +20,12 @@
       padding: 8px 15px;
       text-align: center;
       font-size: 2rem;
-      color: rgb(135, 234, 93);
+      color: $color-green;
       transition: 0.5s;
 
       &:hover,
       &:focus {
-        color: rgb(0, 0, 0);
+        color: $color-dark;
       }
 
       @include md {

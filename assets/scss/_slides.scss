@@ -19,7 +19,7 @@
 
   width: 100%;
   height: 100%;
-  padding: 40px;
+  padding: $gap-x2;
 
   transition: opacity 1s;
 
@@ -27,7 +27,7 @@
   background-position: 50% 50%;
   background-size: cover;
 
-  font-size: 40px;
+  font-size: $gap-x2;
 
   a {
     position: absolute;

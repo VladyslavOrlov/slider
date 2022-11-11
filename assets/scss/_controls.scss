@@ -1,6 +1,6 @@
 .main {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: $gap-x2;
+  margin-bottom: $gap;
 }
 
 .controls {
@@ -29,7 +29,7 @@
 .control {
   position: absolute;
   z-index: 2;
-  color: white;
+  color: $color-light;
   cursor: pointer;
   user-select: none;
   color: rgba(255, 255, 255, 0.2);
@@ -37,7 +37,7 @@
 
   &:hover,
   &:focus {
-    color: white;
+    color: $color-light;
   }
 
   &-pause {

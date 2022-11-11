@@ -105,7 +105,7 @@ li {
 .control {
   position: absolute;
   z-index: 2;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -117,7 +117,7 @@ li {
   transition: 0.5s;
 }
 .control:hover, .control:focus {
-  color: white;
+  color: #ffffff;
 }
 .control-pause {
   top: calc(50% - 10vh);
@@ -242,7 +242,7 @@ li {
 .header-navbar__link {
   position: relative;
   overflow: hidden;
-  padding: 10px 10px;
+  padding: 10px;
   display: block;
   text-decoration: none;
   color: black;
@@ -300,7 +300,7 @@ li {
   transition: 0.5s;
 }
 .footer__items-link:hover, .footer__items-link:focus {
-  color: rgb(0, 0, 0);
+  color: #000000;
 }
 @media (min-width: 768px) {
   .header-menu__container {

@@ -15,10 +15,10 @@
       display: grid;
       align-items: center;
 
-      padding: 20px 10px;
+      padding: $gap $gap-xs;
 
       @include md-min {
-        gap: 20px;
+        gap: $gap;
         grid-template-columns: auto 1fr;
       }
     }
@@ -47,7 +47,7 @@
 
       @include md {
         justify-content: center;
-        margin: 10px;
+        margin: $gap-xs;
         padding: 0;
       }
     }
@@ -55,11 +55,11 @@
     &__link {
       position: relative;
       overflow: hidden;
-      padding: 10px 10px;
+      padding: $gap-xs;
       display: block;
       text-decoration: none;
       color: black;
-      font-size: 20px;
+      font-size: $gap;
       transition: color 0.5s;
 
       @include md {
@@ -80,7 +80,7 @@
 
       &::after {
         position: absolute;
-        bottom: 10px;
+        bottom: $gap-xs;
         left: 50%;
         width: 0;
         content: '';
